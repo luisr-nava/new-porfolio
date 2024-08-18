@@ -1,33 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.nav {
+  animation: nav-shadown 1s linear both;
+  animation-timeline: scroll();
+  animation-range: 0 100px;
+  text-color: #ffffff;
+}
+@keyframes nav-shadown {
+  to {
+    @apply shadow-lg text-emerald-400 backdrop-blur-3xl  bg-white/50 ring-white/10 rounded-2xl;
+  }
+}
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  color-scheme: light dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html {
+  font-family: 'Onest Variable', system-ui, sans-serif;
+  scroll-behavior: smooth;
 }
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  min-height: 100vh;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
