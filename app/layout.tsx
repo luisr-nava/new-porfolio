@@ -1,8 +1,14 @@
 import { Onest } from 'next/font/google'
 import { ProviderTheme, ToastProvider } from '@/provider'
+import { Metadata } from 'next'
 import { Footer } from '@/components'
-
 import './globals.css'
+
+export const metadata: Metadata = {
+  title: 'Porfolio - Luis Rodolfo Navarro',
+  description:
+    'Descubre el trabajo y los proyectos de Luis Rodolfo Navarro, un desarrollador dedicado a la creación de aplicaciones web innovadoras con un enfoque en el rendimiento y la experiencia del usuario.'
+}
 
 const onest = Onest({ subsets: ['latin'] })
 export default function RootLayout({

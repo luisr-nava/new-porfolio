@@ -1,4 +1,10 @@
 import { About, Contact, Experiece, Header, Hero, Projects, SectionContainer } from '@/components'
+import { Metadata } from 'next'
+export const metadata: Metadata = {
+  title: 'Proyectos - Luis Rodolfo Navarro',
+  description:
+    'Una colección de proyectos desarrollados por Luis Rodolfo Navarro, que demuestran su habilidad en la creación de soluciones web dinámicas, eficientes y centradas en el usuario.'
+}
 export default function Home() {
   return (
     <main

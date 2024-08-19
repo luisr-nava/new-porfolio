@@ -2,7 +2,7 @@ import React from 'react'
 
 export const CalendarIcon = () => {
   return (
-    <svg  width='1em' height='1em' viewBox='0 0 24 24'>
+    <svg width='1em' height='1em' viewBox='0 0 24 24'>
       <g fill='none'>
         <path
           fill='currentColor'
@@ -10,11 +10,11 @@ export const CalendarIcon = () => {
         />
         <path
           fill='currentColor'
-          fill-rule='evenodd'
+          fillRule='evenodd'
           d='M2.586 21.414C2 20.828 2 19.886 2 18v-5c0-.471 0-.707.146-.854C2.293 12 2.53 12 3 12h18c.471 0 .707 0 .854.146c.146.147.146.383.146.854v5c0 1.886 0 2.828-.586 3.414S19.886 22 18 22H6c-1.886 0-2.828 0-3.414-.586M8 16a1 1 0 1 0 0 2h8a1 1 0 1 0 0-2z'
-          clip-rule='evenodd'
+          clipRule='evenodd'
         />
-        <path stroke='currentColor' stroke-linecap='round' stroke-width='2' d='M7 3v3m10-3v3' />
+        <path stroke='currentColor' strokeLinecap='round' strokeWidth='2' d='M7 3v3m10-3v3' />
       </g>
     </svg>
   )
