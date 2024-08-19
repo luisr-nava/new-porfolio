@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -37,9 +38,9 @@ export const Hero = () => {
               <Icon icon='icon-park-outline:send-email' width='24' height='24' />
               navaluisrodolfo@gmail.com
             </LinkButton>
-            <LinkButton href='mailto:navaluisrodolfo@gmail.com' passHref>
-              <Icon icon='line-md:document-list-twotone' width='24' height='24' />
-              Mi CV
+            <LinkButton href='/CV-LuisNavarro.pdf' download={true}>
+                <Icon icon='line-md:document-list-twotone' width='24' height='24' />
+                Mi CV
             </LinkButton>
           </div>
         </div>
