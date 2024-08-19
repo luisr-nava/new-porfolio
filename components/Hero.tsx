@@ -1,9 +1,8 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
-import { Icon } from '@iconify/react'
 import { LinkButton } from './LinkButton'
+import { DocumentIcon, GitHubIcon, LinkedinIcon } from './icons'
 
 export const Hero = () => {
   return (
@@ -27,20 +26,17 @@ export const Hero = () => {
           </p>
           <div className='flex flex-wrap'>
             <LinkButton href='https://www.linkedin.com/in/luis-navarro-282858243'>
-              <Icon icon='devicon:linkedin' />
+              <LinkedinIcon />
               LinkedIn
             </LinkButton>
             <LinkButton href='https://www.github.com/luisnava6667'>
-              <Icon icon='mdi:github' width='24' height='24' />
+              <GitHubIcon />
               GitHub
             </LinkButton>
-            <LinkButton href='mailto:navaluisrodolfo@gmail.com'>
-              <Icon icon='icon-park-outline:send-email' width='24' height='24' />
-              navaluisrodolfo@gmail.com
-            </LinkButton>
+
             <LinkButton href='/CV-LuisNavarro.pdf' download={true}>
-                <Icon icon='line-md:document-list-twotone' width='24' height='24' />
-                Mi CV
+              <DocumentIcon />
+              Mi CV
             </LinkButton>
           </div>
         </div>

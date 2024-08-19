@@ -4,7 +4,6 @@ interface LinkButtonProps {
   children: React.ReactNode
   classname?: string
   href: string
-
   download?: boolean
 }
 export const LinkButton = ({ children, classname, href, download }: LinkButtonProps) => {

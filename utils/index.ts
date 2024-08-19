@@ -1,7 +1,5 @@
 import { ExperienceItemProps, NavItems, ProjectsProps, TagProps } from '@/types'
-import { Icon } from '@iconify/react'
-import { ReactElement } from 'react'
-import { createIcon } from './createIcon'
+import { ClerkIcon, NextJsIcon, ReactIcon, TalwindIcon, TypescriptIcon, VueIcon } from '@/components/icons'
 
 export const navItems: NavItems[] = [
   { title: '</LN>', label: 'inicio', url: '#top' },
@@ -34,27 +32,27 @@ export const experienceItems: ExperienceItemProps[] = [
 export const tags: { [key: string]: TagProps } = {
   NEXT: {
     name: 'Next.js',
-    icon: createIcon('nonicons:next-16')
+    icon: NextJsIcon()
   },
   TAILWIND: {
     name: 'Tailwind CSS',
-    icon: createIcon('devicon:tailwindcss')
+    icon: TalwindIcon()
   },
   CLERK: {
     name: 'Clerk',
-    icon: createIcon('simple-icons:clerk')
+    icon: ClerkIcon()
   },
   TYPESCRIPT: {
     name: 'Typescript',
-    icon: createIcon('devicon:typescript')
+    icon: TypescriptIcon()
   },
   REACT: {
     name: 'React',
-    icon: createIcon('logos:react')
+    icon: ReactIcon()
   },
   VUEJS: {
     name: 'Vuejs',
-    icon: createIcon('vscode-icons:file-type-vue')
+    icon: VueIcon()
   }
 }
 export const projects: ProjectsProps[] = [

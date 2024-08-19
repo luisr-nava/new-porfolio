@@ -1,15 +1,15 @@
 import { projects, tags } from '@/utils'
-import { Icon } from '@iconify/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { LinkButton } from './LinkButton'
+import { CodeIcon, GitHubIcon, LinkIcon } from './icons'
 
 export const Projects = () => {
   return (
     <div>
       <h2 className='flex items-center mb-6 text-3xl md:text-4xl font-bold gap-x-3 text-black/80 dark:text-white'>
-        <Icon icon='ph:code' width='28' height='28' />
+        <CodeIcon />
         Projects
       </h2>
       <div className='flex flex-col gap-y-16'>
@@ -48,28 +48,14 @@ export const Projects = () => {
                 <div className='mt-2 text-gray-700 dark:text-gray-200'>{project.description}</div>
                 <div className='flex mt-5 md:mt-2'>
                   <LinkButton href={project.github}>
-                    <Icon icon='mdi:github' width='24' height='24' />
+                    <GitHubIcon/>
                     Code
                   </LinkButton>
                   <LinkButton href={project.link}>
-                    <Icon icon='ph:link-bold' width='24' height='24' />
+                    <LinkIcon />
                     Preview
                   </LinkButton>
                 </div>
-                {/* <footer className='flex items-end justify-start mt-4 gap-x-4'>
-                  {project.github && (
-                    <LinkButton href={github} target='_blank'>
-                      <GitHub className='size-6' />
-                      Code
-                    </LinkButton>
-                  )}
-                  {link && (
-                    <LinkButton href={link} target='_blank'>
-                      <Link className='size-4' />
-                      Preview
-                    </LinkButton>
-                  )}
-                </footer> */}
               </div>
             </div>
           </article>

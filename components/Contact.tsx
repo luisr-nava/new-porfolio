@@ -1,11 +1,11 @@
 'use client'
 import { ContactForm } from '@/types'
-import { Icon } from '@iconify/react/dist/iconify.js'
 import React, { useRef } from 'react'
 import emailjs from '@emailjs/browser'
 import { useForm } from 'react-hook-form'
 import { ErrorMessage } from './ErrorMessage'
 import { toast } from 'react-toastify'
+import { ContactIcon } from './icons'
 
 export const Contact = () => {
   const form = useRef<HTMLFormElement>(null)
@@ -41,7 +41,7 @@ export const Contact = () => {
   return (
     <div>
       <h2 className='flex items-center mb-14 text-3xl md:text-4xl font-bold gap-x-3 text-black/80 dark:text-white '>
-        <Icon icon='lucide:contact' width='28' height='28' />
+        <ContactIcon />
         Contacto
       </h2>
       <form className='mx-auto' onSubmit={handleSubmit(handleSendEmail)} ref={form}>
@@ -105,8 +105,8 @@ export const Contact = () => {
         <div className='flex justify-center '>
           <button
             type='submit'
-            className='text-black dark:text-white mt-5 items-center px-8 py-2 text-xl font-medium  bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-emerald-700 focus:z-10 
-      focus:ring-4 focus:outline-none focus:ring-gray-100  dark:bg-gray-800  dark:border-gray-600 dark:hover:text-white
+            className='text-black dark:text-white mt-5 items-center px-8 py-2 text-xl font-medium  bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-emerald-700 
+ dark:bg-gray-800  dark:border-gray-600 dark:hover:text-white
       dark:hover:bg-gray-700  transition w-full sm:w-auto  text-center  '>
             Enviar
           </button>

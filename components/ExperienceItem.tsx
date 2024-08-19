@@ -1,6 +1,6 @@
 import { ExperienceItemProps } from '@/types'
-import { Icon } from '@iconify/react/dist/iconify.js'
 import Link from 'next/link'
+import { CalendarIcon } from './icons'
 
 export const ExperienceItem = ({
   description,
@@ -13,7 +13,7 @@ export const ExperienceItem = ({
   return (
     <li className='mb-10 ms-6'>
       <span className='absolute flex items-center justify-center w-6 h-6 bg-emerald-300 rounded-full -start-3 ring-8 ring-emerald-500 dark:ring-emerald-500 dark:bg-emerald-700'>
-        <Icon icon='lets-icons:calendar-fill' />
+        <CalendarIcon />
       </span>
       <h3 className='flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white'>{title}</h3>
       <time className='block mb-2 text-sm font-bold leading-none text-emerald-700 dark:text-gray-100'>

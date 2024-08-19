@@ -1,12 +1,12 @@
 import { experienceItems } from '@/utils'
 import { ExperienceItem } from './ExperienceItem'
-import { Icon } from '@iconify/react'
+import { BriefcaseIcon } from './icons'
 
 export const Experiece = () => {
   return (
     <div className='grid gap-y-7 space-x-3'>
       <h2 className='flex items-center mb-6 text-3xl md:text-4xl font-bold gap-x-3 text-black/80 dark:text-white'>
-        <Icon icon='ph:briefcase' width='28' height='28' />
+        <BriefcaseIcon />
         Experiencia Laboral
       </h2>
       <ol className='relative border-s border-emerald-600 dark:border-white'>

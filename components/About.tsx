@@ -1,12 +1,12 @@
-import { Icon } from '@iconify/react/dist/iconify.js'
 import Image from 'next/image'
 import React from 'react'
+import { UserCheckIcon } from './icons'
 
 export const About = () => {
   return (
     <article className=' text-gray-700 dark:text-gray-300 md:flex-row'>
       <h2 className='flex items-center mb-14 text-3xl md:text-4xl font-bold gap-x-3 text-black/80 dark:text-white '>
-        <Icon icon='mi:user-check' width='28' height='28' />
+        <UserCheckIcon />
         Sobre mí
       </h2>
       <div className='md:flex grid md:gap-5 justify-items-center items-center'>
