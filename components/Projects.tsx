@@ -61,13 +61,13 @@ export const Projects = () => {
           </article>
         ))}
       </div>
-      <Link
+      {/* <Link
         href='/projects'
         className=' mt-5 inline-flex items-center px-4 py-2 text-sm md:text-xl font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-emerald-700 focus:z-10 
       focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-emerald-700 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:text-white
       dark:hover:bg-gray-700 dark:focus:ring-gray-700 transition'>
         Ver Más
-      </Link>
+      </Link> */}
     </div>
   )
 }
