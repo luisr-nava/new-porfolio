@@ -1,8 +1,8 @@
-'use client'
-import React, { useEffect } from 'react'
-import Image from 'next/image'
-import { LinkButton } from './LinkButton'
-import { DocumentIcon, GitHubIcon, LinkedinIcon } from './icons'
+"use client";
+import React, { useEffect } from "react";
+import Image from "next/image";
+import { LinkButton } from "./LinkButton";
+import { DocumentIcon, GitHubIcon, LinkedinIcon } from "./icons";
 
 export const Hero = () => {
   return (
@@ -40,7 +40,7 @@ export const Hero = () => {
               GitHub
             </LinkButton>
 
-            <LinkButton href="/CV-LuisNavarro.pdf" download={true}>
+            <LinkButton href="/LuisNavarro_FrontendDev.pdf" download={true}>
               <DocumentIcon />
               Mi CV
             </LinkButton>
@@ -49,4 +49,4 @@ export const Hero = () => {
       </div>
     </div>
   );
-}
+};
