@@ -86,15 +86,17 @@ export const projects: ProjectsProps[] = [
     github: "https://github.com/luisnava6667/mirro-clone",
     image: "/projects/mirro-clone.webp",
     tags: [tags.NEXT, tags.TYPESCRIPT, tags.CLERK, tags.TAILWIND],
+    tecnology: "Next.js"
   },
   {
     title: "Administrador Pacientes Vue",
     description:
-      "Aplicación desarrollada con Vue.js que permite gestionar y organizar la información de pacientes. Es ideal para su uso en clínicas médicas, veterinarias o cualquier otro entorno que requiera un seguimiento detallado de los pacientes.",
+    "Aplicación desarrollada con Vue.js que permite gestionar y organizar la información de pacientes. Es ideal para su uso en clínicas médicas, veterinarias o cualquier otro entorno que requiera un seguimiento detallado de los pacientes.",
     link: "https://administrador-pacientes-vue-js.vercel.app/",
     github: "https://github.com/luisnava6667/Administrador-Pacientes-VueJs",
     image: "/projects/segimiento.webp",
     tags: [tags.VUEJS, tags.TAILWIND],
+    tecnology: "Vue.js"
   },
   {
     title: "AppDolar",
@@ -104,5 +106,6 @@ export const projects: ProjectsProps[] = [
     github: "https://github.com/luisnava6667/app-dolar",
     image: "/projects/appdolar.webp",
     tags: [tags.NEXT, tags.TAILWIND],
+    tecnology: "Next.js"
   },
 ];
