@@ -30,6 +30,7 @@ export interface ProjectsProps {
   image: string;
   tags: TagProps[];
   tecnology?: string;
+  backendRepo?: string;
 }
 const contactSchema = z.object({
   user_name: z.string(),

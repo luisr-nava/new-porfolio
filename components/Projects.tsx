@@ -1,8 +1,7 @@
 "use client";
 
-import { projects, tags } from "@/utils";
+import { projects } from "@/utils";
 import Image from "next/image";
-import Link from "next/link";
 import React, { useMemo, useState } from "react";
 import { LinkButton } from "./LinkButton";
 import { CodeIcon, GitHubIcon, LinkIcon } from "./icons";
@@ -24,10 +23,8 @@ const norm = (s?: string) =>
 const matchTab = (tab: TabKey, p: ProjectsProps) => {
   if (tab === "all") return true;
   const t = norm(p.tecnology);
-
   switch (tab) {
     case "react":
-      // React puro (evita confundir con Next)
       return t.includes("react") && !t.includes("next");
     case "next":
       return t.includes("next");
@@ -36,10 +33,15 @@ const matchTab = (tab: TabKey, p: ProjectsProps) => {
     case "vue":
       return t.includes("vue");
   }
+  return false;
 };
+
+const INITIAL = 3;
+const STEP = 3;
 
 export const Projects = () => {
   const [tab, setTab] = useState<TabKey>("all");
+  const [visible, setVisible] = useState<number>(INITIAL);
 
   const counts = useMemo(() => {
     const base = {
@@ -62,10 +64,11 @@ export const Projects = () => {
     () => projects.filter((p) => matchTab(tab, p)),
     [tab],
   );
+  const toShow = filtered.slice(0, visible);
 
   return (
     <div>
-      <h2 className="flex items-center mb-6 text-3xl md:text-4xl font-bold gap-x-3 text-black/80 dark:text-white">
+      <h2 className="mb-6 flex items-center gap-x-3 text-3xl font-bold text-black/80 dark:text-white md:text-4xl">
         <CodeIcon />
         Proyectos
       </h2>
@@ -87,20 +90,24 @@ export const Projects = () => {
               : key === "react-native"
               ? counts["react-native"]
               : counts.vue;
+
           return (
             <button
               key={key}
               role="tab"
               aria-selected={isActive}
-              onClick={() => setTab(key)}
+              onClick={() => {
+                setTab(key);
+                setVisible(INITIAL); // reset al cambiar de tab
+              }}
               className={[
-                "px-3 py-1.5 text-sm md:text-base rounded-lg transition",
+                "rounded-lg px-3 py-1.5 text-sm transition md:text-base",
                 "focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500",
                 isActive
-                  ? "bg-white dark:bg-gray-900 text-emerald-700 dark:text-emerald-300 shadow"
-                  : "text-gray-700/80 dark:text-gray-300 hover:bg-white/60 dark:hover:bg-gray-900/50",
+                  ? "bg-white text-emerald-700 shadow dark:bg-gray-900 dark:text-emerald-300"
+                  : "text-gray-700/80 hover:bg-white/60 dark:text-gray-300 dark:hover:bg-gray-900/50",
               ].join(" ")}>
-              <span className="align-middle">{label}</span>
+              <span>{label}</span>
               <span className="ml-2 inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-gray-200 px-1 text-xs font-semibold text-gray-700 dark:bg-gray-700 dark:text-gray-200">
                 {badge}
               </span>
@@ -111,17 +118,17 @@ export const Projects = () => {
 
       {/* Listado */}
       <div className="flex flex-col gap-y-16">
-        {filtered.map((project, index) => (
+        {toShow.map((project, index) => (
           <article
             key={index}
-            className="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+            className="group flex flex-col space-x-0 space-y-8 md:flex-row md:space-x-8 md:space-y-0">
             <div className="w-full md:w-1/2">
-              <div className="relative grid col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+              <div className="relative grid transform gap-8 overflow-clip rounded-xl shadow-xl transition duration-500 ease-in-out md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
                 <Image
                   width={300}
                   height={100}
                   alt={project.title}
-                  className="object-cover object-top w-full h-56 transition sm:h-full md:scale-110 md:group-hover:scale-105"
+                  className="h-56 w-full object-cover object-top transition sm:h-full md:scale-110 md:group-hover:scale-105"
                   loading="lazy"
                   src={project.image}
                 />
@@ -136,7 +143,7 @@ export const Projects = () => {
               <ul className="mt-2 flex flex-row flex-wrap gap-2">
                 {(project.tags ?? []).map((tag: any, i: number) => (
                   <li key={i}>
-                    <span className="text-black flex items-center gap-x-2 rounded-full text-xs bg-white py-1 px-2 dark:bg-gray-800 dark:text-gray-100">
+                    <span className="flex items-center gap-x-2 rounded-full bg-white py-1 px-2 text-xs text-black dark:bg-gray-800 dark:text-gray-100">
                       {tag.icon}
                       {tag.name}
                     </span>
@@ -148,13 +155,23 @@ export const Projects = () => {
                 {project.description}
               </div>
 
-              <div className="mt-5 flex md:mt-2">
+              <div className="mt-5 flex gap-2 md:mt-2">
                 <LinkButton href={project.github}>
-                  <GitHubIcon /> Code
+                  <GitHubIcon />
+                  {project?.backendRepo && project.backendRepo.length > 0
+                    ? "Frontend"
+                    : "Code"}
                 </LinkButton>
-                <LinkButton href={project.link}>
-                  <LinkIcon /> Preview
-                </LinkButton>
+                {project?.backendRepo && project.backendRepo.length > 0 && (
+                  <LinkButton href={project.backendRepo ?? ""}>
+                    <GitHubIcon /> Backend
+                  </LinkButton>
+                )}
+                {project.link.length > 0 && (
+                  <LinkButton href={project.link}>
+                    <LinkIcon /> Preview
+                  </LinkButton>
+                )}
               </div>
             </div>
           </article>
@@ -164,6 +181,28 @@ export const Projects = () => {
           <p className="text-sm text-gray-600 dark:text-gray-400">
             No hay proyectos para este filtro… todavía 😉
           </p>
+        )}
+
+        {/* Controles Cargar más / Mostrar menos */}
+        {filtered.length > 0 && (
+          <div className="mt-4 flex items-center justify-center gap-3">
+            {visible < filtered.length && (
+              <button
+                onClick={() =>
+                  setVisible((v) => Math.min(v + STEP, filtered.length))
+                }
+                className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-800 transition hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800">
+                Cargar más
+              </button>
+            )}
+            {visible > INITIAL && (
+              <button
+                onClick={() => setVisible(INITIAL)}
+                className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-800 transition hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800">
+                Mostrar menos
+              </button>
+            )}
+          </div>
         )}
       </div>
     </div>
